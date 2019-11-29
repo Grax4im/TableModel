@@ -37,6 +37,25 @@ public class TableModel extends AbstractTableModel{
         }
        return null;
     }
+
+    @Override
+    public void setValueAt(Object valor, int linha, int coluna) {
+        switch(coluna) {
+                case 0:
+                    dados.get(linha).setDescricao((String)valor);
+                    break;
+                case 1:
+                    dados.get(linha).setQtd(Integer.parseInt((String)valor));
+                    break;
+                case 2:
+                    dados.get(linha).setValor(Double.parseDouble((String)valor));
+                    break;
+        }
+        this.fireTableRowsUpdated(linha, linha);
+
+    }
+    
+
     
     public void addRow(Produto p) {
         this.dados.add(p);
@@ -47,5 +66,6 @@ public class TableModel extends AbstractTableModel{
         this.dados.remove(linha);
         this.fireTableRowsDeleted(linha, linha);
     }
+    
     
 }

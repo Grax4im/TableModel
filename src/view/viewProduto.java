@@ -30,7 +30,7 @@ public class viewProduto extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        botaoAlterar = new javax.swing.JButton();
         botaoSalvar = new javax.swing.JButton();
         botaoExcluir = new javax.swing.JButton();
 
@@ -73,10 +73,10 @@ public class viewProduto extends javax.swing.JFrame {
 
         jLabel3.setText("Valor:");
 
-        jButton1.setText("Alterar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botaoAlterar.setText("Alterar");
+        botaoAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botaoAlterarActionPerformed(evt);
             }
         });
 
@@ -106,7 +106,7 @@ public class viewProduto extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(botaoExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botaoAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(138, 138, 138))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -140,7 +140,7 @@ public class viewProduto extends javax.swing.JFrame {
                     .addComponent(txtqtd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(botaoAlterar)
                     .addComponent(botaoExcluir)
                     .addComponent(botaoSalvar))
                 .addGap(27, 27, 27)
@@ -163,9 +163,13 @@ public class viewProduto extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtqtdActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void botaoAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAlterarActionPerformed
+        if(jtProdutos.getSelectedRow() != -1) {
+            tableModel.setValueAt(txtdesc.getText(),jtProdutos.getSelectedRow(), 0);
+            tableModel.setValueAt(txtqtd.getText(),jtProdutos.getSelectedRow(), 1);
+            tableModel.setValueAt(txtValor.getText(),jtProdutos.getSelectedRow(), 2);
+        }
+    }//GEN-LAST:event_botaoAlterarActionPerformed
 
     private void botaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSalvarActionPerformed
         Produto p = new Produto();
@@ -177,7 +181,7 @@ public class viewProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoSalvarActionPerformed
 
     private void botaoExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExcluirActionPerformed
-        if(jtProdutos.getSelectedRow() != 1) {
+        if(jtProdutos.getSelectedRow() != -1) {
             tableModel.removeRow(jtProdutos.getSelectedRow());
         }
           
@@ -219,9 +223,9 @@ public class viewProduto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botaoAlterar;
     private javax.swing.JButton botaoExcluir;
     private javax.swing.JButton botaoSalvar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
